@@ -1,6 +1,6 @@
 // Authentication logic
 
-const User = require('../models/User');
+const User = require('../models/Users');
 const { generateToken, generateRandomToken } = require('../utils/generateToken');
 const { sendEmail, emailVerificationTemplate, passwordResetTemplate } = require('../utils/emailService');
 const { validateRegistration, validateLogin } = require('../middleware/validation');

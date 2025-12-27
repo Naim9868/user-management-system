@@ -9,9 +9,16 @@ const {
     changePassword
 } = require('../controllers/userController');
 
+
+// console.log('protect:', protect);
+// console.log('getUserProfile:', getUserProfile);
+// console.log('updateUserProfile:', updateUserProfile);
+// console.log('changePassword:', changePassword);
+
 // Protected routes
 router.get('/profile', protect, getUserProfile);
 router.put('/profile', protect, updateUserProfile);
 router.put('/change-password', protect, changePassword);
+
 
 module.exports = router;

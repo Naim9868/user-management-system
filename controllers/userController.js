@@ -1,6 +1,6 @@
 // User management logic
 
-const User = require('../models/User');
+const User = require('../models/Users');
 
 // @desc    Get user profile
 // @route   GET /api/users/profile

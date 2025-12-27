@@ -1,6 +1,6 @@
 
 
-const User = require('../models/User');
+const User = require('../models/Users');
 
 // @desc    Get all users
 // @route   GET /api/admin/users
@@ -11,6 +11,10 @@ const getAllUsers = async (req, res) => {
         const limit = parseInt(req.query.limit) || 10;
         const skip = (page - 1) * limit;
 
+        console.log(page);
+        console.log(limit);
+        console.log(skip);
+        
         // Build query for search/filter
         let query = {};
         

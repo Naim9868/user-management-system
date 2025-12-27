@@ -1,0 +1,20 @@
+Complete User Flow Test:
+
+
+Navigate to /register - Form should load
+
+Register new user - Success message, check email
+
+Verify email - Click link from Ethereal
+
+Login - Should work, get token
+
+Access /profile - Should load user data
+
+Update profile - Changes should save
+
+Change password - Should work with new password
+
+Logout - Should clear token
+
+Try accessing /profile - Should redirect to login

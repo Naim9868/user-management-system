@@ -1,6 +1,5 @@
 // Authentication routes
 
-
 const express = require('express');
 const router = express.Router();
 const {
@@ -9,7 +8,7 @@ const {
     loginUser,
     forgotPassword,
     resetPassword
-} = require('../controllers/authController');
+} = require('../controllers/authControllers');
 
 // Public routes
 router.post('/register', registerUser);
