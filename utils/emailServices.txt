@@ -1,0 +1,82 @@
+Choose Your Email Service
+Option A: Gmail SMTP (Free, Easy)
+Option B: SendGrid (Free Tier - 100 emails/day)
+Option C: Mailgun (Free Tier - 5,000 emails/month)
+
+
+Setup Instructions for Each Provider
+
+
+
+Option A: Gmail Setup
+1. Enable 2-Factor Authentication
+Go to Google Account Security
+
+Enable 2-Step Verification
+
+2. Generate App Password
+Go to Security → 2-Step Verification → App passwords
+
+Select "Mail" as the app
+
+Generate and copy the 16-character password
+
+3. Update .env
+env
+EMAIL_PROVIDER=gmail
+EMAIL_USERNAME=your.email@gmail.com
+EMAIL_PASSWORD=abcd efgh ijkl mnop  # Your 16-char app password
+
+
+
+
+Option B: SendGrid Setup
+1. Create SendGrid Account
+Go to SendGrid
+
+Sign up for free account (100 emails/day)
+
+2. Get API Key
+Go to Settings → API Keys
+
+Create Restricted Access key with "Mail Send" permission
+
+Copy the API key
+
+3. Verify Sender Identity
+Go to Settings → Sender Authentication
+
+Verify single sender or domain
+
+Use verified email as SENDGRID_FROM_EMAIL
+
+4. Update .env
+env
+EMAIL_PROVIDER=sendgrid
+SENDGRID_API_KEY=SG.xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+SENDGRID_FROM_EMAIL=verified-email@yourdomain.com
+
+
+
+
+Option C: Mailgun Setup
+1. Create Mailgun Account
+Go to Mailgun
+
+Sign up for free account (5,000 emails/month)
+
+2. Get SMTP Credentials
+Go to Sending → Domain Settings
+
+Copy SMTP credentials from the dashboard
+
+Note the SMTP server, port, login, and password
+
+3. Update .env
+env
+EMAIL_PROVIDER=mailgun
+MAILGUN_SMTP_SERVER=smtp.mailgun.org
+MAILGUN_SMTP_PORT=587
+MAILGUN_SMTP_LOGIN=postmaster@sandboxxxxxxx.mailgun.org
+MAILGUN_SMTP_PASSWORD=xxxxxxxxxxxxxxxx
+MAILGUN_FROM_EMAIL=noreply@yourdomain.com

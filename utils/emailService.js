@@ -3,9 +3,13 @@
 const nodemailer = require('nodemailer');
 
 const sendEmail = async (options) => {
-    // Create transporter
-    const transporter = nodemailer.createTransporter({
+   try {
+     // Create transporter
+    const transporter = nodemailer.createTransport({
         service: process.env.EMAIL_SERVICE,
+        // host: 'smtp.sendgrid.net',
+        // port: 587,
+        // secure: false,
         auth: {
             user: process.env.EMAIL_USERNAME,
             pass: process.env.EMAIL_PASSWORD
@@ -22,7 +26,18 @@ const sendEmail = async (options) => {
     };
 
     // Send email
-    await transporter.sendMail(mailOptions);
+    const info = await transporter.sendMail(mailOptions);
+
+    console.log('✅ Email sent successfully');
+      console.log('📧 Message ID:', info.messageId);
+      console.log('👤 To:', options.email);
+
+    return info;
+    
+   } catch (error) {
+     console.error('❌ Email sending failed:', error);
+      throw new Error(`Email delivery failed: ${error.message}`);
+   }
 };
 
 // Email templates

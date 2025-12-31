@@ -14,6 +14,7 @@ const registerUser = async (req, res) => {
         // Validate input
         const { errors, isValid } = validateRegistration(req.body);
         if (!isValid) {
+            console.log(isValid);
             return res.status(400).json({ errors });
         }
 
