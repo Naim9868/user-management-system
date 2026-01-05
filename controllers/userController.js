@@ -1,13 +1,14 @@
 // User management logic
 
 const User = require('../models/Users');
+const validator = require('validator');
 
 // @desc    Get user profile
 // @route   GET /api/users/profile
 // @access  Private
 const getUserProfile = async (req, res) => {
     try {
-        const user = await User.findById(req.user.id);
+        const user = await User.findById(req.user.id); //this user id comes from the protect middleware(authMiddleware.js)
 
         res.json({
             success: true,
@@ -33,7 +34,7 @@ const getUserProfile = async (req, res) => {
 const updateUserProfile = async (req, res) => {
     try {
         const { name, email } = req.body;
-        const userId = req.user.id;
+        const userId = req.user.id;  //this user id comes from the protect middleware(authMiddleware.js)
 
         // Basic validation
         if (!name || name.trim().length === 0) {
@@ -84,7 +85,7 @@ const updateUserProfile = async (req, res) => {
 const changePassword = async (req, res) => {
     try {
         const { currentPassword, newPassword } = req.body;
-        const userId = req.user.id;
+        const userId = req.user.id; //this user id comes from the protect middleware(authMiddleware.js)
 
         if (!currentPassword || !newPassword) {
             return res.status(400).json({ message: 'Both current and new password are required' });
