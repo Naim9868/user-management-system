@@ -12,7 +12,13 @@ const generateToken = (id) => {
 
 // Generate random token for email verification/password reset
 const generateRandomToken = () => {
-    return crypto.randomBytes(32).toString('hex');
+    //Create a random token string
+    const randomToken =  crypto.randomBytes(32).toString('hex');
+
+    //Hash token for secure storage in DB
+    const hashedRandomToken = crypto.createHash('sha256').update(randomToken).digest('hex');
+    
+    return {randomToken, hashedRandomToken};
 };
 
 module.exports = { generateToken, generateRandomToken };

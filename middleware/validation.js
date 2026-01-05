@@ -22,6 +22,7 @@ const validateRegistration = (data) => {
     if (!data.password || data.password.length < 6) {
         errors.password = 'Password must be at least 6 characters';
     }
+    
 
     return {
         errors,
